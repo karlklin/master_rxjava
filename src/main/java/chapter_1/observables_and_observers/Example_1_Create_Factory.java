@@ -1,8 +1,10 @@
+package chapter_1.observables_and_observers;
+
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
-public class Example_1_CreateFactory {
+public class Example_1_Create_Factory {
 
     public static void main(String[] args) {
         Observable<String> myObservable = Observable.create(emitter -> {

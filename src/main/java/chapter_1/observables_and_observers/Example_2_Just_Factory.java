@@ -1,8 +1,10 @@
+package chapter_1.observables_and_observers;
+
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
-public class Example_2_JustFactory {
+public class Example_2_Just_Factory {
 
     public static void main(String[] args) {
         Observable<String> myObservable = Observable.just("first value", "second value", "third value");
