@@ -5,7 +5,7 @@ import io.reactivex.disposables.Disposable;
 
 import java.util.concurrent.TimeUnit;
 
-public class Example_14_DIsposable_Observer {
+public class Example_14_Disposable_Observer {
 
     public static void main(String[] args) throws InterruptedException {
         Disposable disposable = Observable.interval(1000, TimeUnit.MILLISECONDS)
