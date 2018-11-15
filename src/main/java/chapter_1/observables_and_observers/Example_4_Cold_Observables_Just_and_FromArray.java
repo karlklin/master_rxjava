@@ -4,9 +4,12 @@ import io.reactivex.Observable;
 
 import static java.lang.System.out;
 
-public class Example_4_Cold_Observables {
+public class Example_4_Cold_Observables_Just_and_FromArray {
 
     public static void main(String[] args) {
+        // COLD Observable means that it emits all items to first subscribed Observer
+        // and then starts emitting the items to second and so on
+
         // Just Observable is COLD Observable
         Observable<String> justObservable = Observable.just("first value lambda", "second value lambda", "third value lambda");
 

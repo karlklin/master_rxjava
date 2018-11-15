@@ -4,19 +4,10 @@ import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
-public class Example_1_Create_Factory {
+public class Example_2_Observable_By_Just_Factory {
 
     public static void main(String[] args) {
-        Observable<String> myObservable = Observable.create(emitter -> {
-            try {
-                emitter.onNext("first value");
-                emitter.onNext("second value");
-                emitter.onNext("third value");
-                emitter.onComplete();
-            } catch (Exception e) {
-                emitter.onError(e);
-            }
-        });
+        Observable<String> myObservable = Observable.just("first value", "second value", "third value");
 
         Observer<String> myObserver = new Observer<String>() {
             @Override
@@ -35,7 +26,7 @@ public class Example_1_Create_Factory {
 
             @Override
             public void onComplete() {
-                System.out.println("completed!");
+                System.out.println("completed 2!");
             }
         };
 
