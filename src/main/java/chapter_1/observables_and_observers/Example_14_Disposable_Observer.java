@@ -8,8 +8,12 @@ import java.util.concurrent.TimeUnit;
 public class Example_14_Disposable_Observer {
 
     public static void main(String[] args) throws InterruptedException {
-        Disposable disposable = Observable.interval(1000, TimeUnit.MILLISECONDS)
-                .subscribe(System.out::println);
+        Observable<Long> interval = Observable.interval(1000, TimeUnit.MILLISECONDS);
+
+        Disposable disposable = interval
+                .subscribe(c -> System.out.println("Observer1 " + c));
+
+        interval.subscribe(c -> System.out.println("Observer2 " + c));
 
         // subscribing for 5000 ms
         Thread.sleep(5000);

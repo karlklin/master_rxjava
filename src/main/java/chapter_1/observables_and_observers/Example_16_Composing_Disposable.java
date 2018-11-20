@@ -6,7 +6,7 @@ import io.reactivex.disposables.Disposable;
 
 import java.util.concurrent.TimeUnit;
 
-public class Example_16_Disposable_Composite {
+public class Example_16_Composing_Disposable {
 
     public static void main(String[] args) throws InterruptedException {
         Observable<Long> intervalObservable = Observable.interval(1000, TimeUnit.MILLISECONDS);
@@ -14,7 +14,7 @@ public class Example_16_Disposable_Composite {
         Disposable disposable1 = intervalObservable
                 .subscribe(counter -> System.out.println("Observer1: " + counter));
 
-        Disposable disposable2= intervalObservable
+        Disposable disposable2 = intervalObservable
                 .subscribe(counter -> System.out.println("Observer2: " + counter));
 
         CompositeDisposable disposables = new CompositeDisposable(disposable1, disposable2);

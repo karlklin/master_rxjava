@@ -14,12 +14,6 @@ public class Example_10_Defer_Factory_TRICKY {
 
         Supplier<String> supplier = () -> String.valueOf(count);
         Callable<String> callable = () -> String.valueOf(count);
-        Supplier<String> supplier2 = new Supplier<String>() {
-            @Override
-            public String get() {
-                return String.valueOf(count);
-            }
-        };
 
         // Here we are creating Range Observable immediately
         Observable<Integer> standardObservable = Observable.range(start, count);
@@ -36,6 +30,5 @@ public class Example_10_Defer_Factory_TRICKY {
 
         System.out.println("callable=" + callable.call());
         System.out.println("supplier=" + supplier.get());
-        System.out.println("supplier2=" + supplier2.get());
     }
 }

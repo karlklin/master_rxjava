@@ -19,10 +19,10 @@ public class Example_15_Disposing_in_Observer {
 
             @Override
             public void onNext(Long interval) {
-                System.out.println(interval);
+                System.out.println("Observer1 = " + interval);
                 if (interval == 3) {
                     this.disposable.dispose();
-                    System.out.println("Disposed");
+                    System.out.println("Observer1 disposed");
                 }
             }
 
@@ -33,12 +33,15 @@ public class Example_15_Disposing_in_Observer {
 
             @Override
             public void onComplete() {
-                System.out.println("Complete");
+                System.out.println("Observer1 complete");
             }
         };
 
-        Observable.interval(1000, TimeUnit.MILLISECONDS)
+        Observable<Long> interval = Observable.interval(1000, TimeUnit.MILLISECONDS);
+        interval
                 .subscribe(observer);
+
+        interval.subscribe(count -> System.out.println("Observer2 " + count));
 
         // subscribing for 5000 ms
         Thread.sleep(5000);
