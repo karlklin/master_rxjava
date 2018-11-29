@@ -24,7 +24,7 @@ public class Example_33_merge_and_mergeWith {
         source1.mergeWith(source2)
                 .subscribe(System.out::println);
 
-        Observable<Long> interval1 = Observable.intervalRange(1, 5, 1000, 1000, TimeUnit.MILLISECONDS);
+        Observable<Long> interval1 = Observable.intervalRange(1, 5, 1000, 300, TimeUnit.MILLISECONDS);
         Observable<Long> interval2 = Observable.intervalRange(100, 5, 0, 1000, TimeUnit.MILLISECONDS);
 
         Observable.merge(interval1, interval2)
