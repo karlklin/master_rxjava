@@ -16,7 +16,7 @@ public class Example_34_flatMap {
 
         System.out.println("We could map and then flatMap");
         source1.map(s -> s.split(""))
-                .map(strings -> Observable.fromArray(strings))
+                .flatMap(strings -> Observable.fromArray(strings))
                 .subscribe(System.out::println);
 
         System.out.println("Or just flatMap directly");

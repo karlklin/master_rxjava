@@ -4,22 +4,22 @@ import io.reactivex.Observable;
 
 import java.util.concurrent.TimeUnit;
 
-public class Example_43_replying {
+public class Example_43_caching {
 
     public static void main(String[] args) throws InterruptedException {
-        // Reply is kind of queue when we specify how many items will be remained
-        // in the queue for observers that start subscribing
+        // Caching vs Replying: https://stackoverflow.com/questions/32522017/rxjava-is-cache-the-same-as-replay/32537190#32537190
 
-        replyingExample();
+        // But caching behaves differently. It suspends all emissions as long as all subscriptions are up to speed.
+
+        cacheExample();
     }
 
-    static void replyingExample() throws InterruptedException {
+    static void cacheExample() throws InterruptedException {
         Observable<Long> autoObservable = Observable
                 .interval(1000, TimeUnit.MILLISECONDS)
-                .replay(4)
-                .autoConnect();
+                .cache();
 
-        System.out.println("=== replying example ===");
+        System.out.println("=== caching example ===");
 
         autoObservable
                 .subscribe(s -> System.out.println("observer 1:" + s));

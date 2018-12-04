@@ -8,7 +8,7 @@ import io.reactivex.observables.ConnectableObservable;
 import javax.xml.bind.ValidationEvent;
 import java.util.concurrent.TimeUnit;
 
-public class Example_41_multicasating_and_autoconnect {
+public class Example_41_autoconnect {
 
     public static void main(String[] args) throws InterruptedException {
         // Multi-casting or hot observable emits value to all subscribes at the same time

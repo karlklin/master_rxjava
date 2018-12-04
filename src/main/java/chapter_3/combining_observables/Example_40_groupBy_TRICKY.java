@@ -4,7 +4,7 @@ import io.reactivex.Maybe;
 import io.reactivex.Observable;
 import io.reactivex.observables.GroupedObservable;
 
-public class Example_40_groupBy {
+public class Example_40_groupBy_TRICKY {
 
     public static void main(String[] args) {
         Observable<String> observable = Observable.just("red", "green", "black", "blue", "purple",  "brown", "grey");

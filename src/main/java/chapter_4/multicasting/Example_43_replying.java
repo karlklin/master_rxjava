@@ -4,72 +4,32 @@ import io.reactivex.Observable;
 
 import java.util.concurrent.TimeUnit;
 
-public class Example_42_sharing {
+public class Example_43_replying {
 
     public static void main(String[] args) throws InterruptedException {
-        // After using refCount when all observers are disposed
-        // it will re-send all emissions from begging
+        // Reply is kind of queue when we specify how many items will be remained
+        // in the queue for observers that start subscribing
 
-        // E.g. after sharing invitations with class A
-        // I'd like to share them with class B as well
-
-        /// connectableExample();
-        sharingExample();
+        replyingExample();
     }
 
-    @SuppressWarnings("unused")
-    static void connectableExample() throws InterruptedException {
+    static void replyingExample() throws InterruptedException {
         Observable<Long> autoObservable = Observable
                 .interval(1000, TimeUnit.MILLISECONDS)
-                .publish()
-                .autoConnect(2);
+                .replay(4)
+                .autoConnect();
 
-        System.out.println("=== connectable example ===");
+        System.out.println("=== replying example ===");
 
-        System.out.println("=== 1 and 2 observers are subscribing ===");
         autoObservable
-                .take(2)
                 .subscribe(s -> System.out.println("observer 1:" + s));
 
+        Thread.sleep(7000);
+
+        System.out.println("=== 2 is subscribing ===");
+
         autoObservable
-                .take(5)
                 .subscribe(s -> System.out.println("observer 2:" + s));
-
-
-        Thread.sleep(7000);
-
-        System.out.println("=== 3 and 4 observers are subscribing ===");
-        autoObservable
-                .subscribe(s -> System.out.println("observer 3:" + s));
-        autoObservable
-                .subscribe(s -> System.out.println("observer 4:" + s));
-
-        Thread.sleep(5000);
-    }
-
-    static void sharingExample() throws InterruptedException {
-        Observable<Long> autoObservable = Observable
-                .interval(1000, TimeUnit.MILLISECONDS)
-                .share();
-
-        System.out.println("=== sharing example ===");
-
-        autoObservable
-                .take(2)
-                .subscribe(s -> System.out.println("sharing observer 1:" + s));
-
-        autoObservable
-                .take(5)
-                .subscribe(s -> System.out.println("sharing observer 2:" + s));
-
-        Thread.sleep(7000);
-
-        System.out.println("=== 3 and 4 observers are subscribing ===");
-
-        autoObservable
-                .subscribe(s -> System.out.println("sharing observer 3:" + s));
-        autoObservable
-                .subscribe(s -> System.out.println("sharing observer 4:" + s));
 
         Thread.sleep(5000);
     }

@@ -1,4 +1,4 @@
-package chapter_3.combining_observables;
+package chapter_4.multicasting;
 
 import io.reactivex.Observable;
 
@@ -7,10 +7,17 @@ import java.util.concurrent.TimeUnit;
 public class Example_42_sharing {
 
     public static void main(String[] args) throws InterruptedException {
-        sharingExample();
+        // After using refCount when all observers are disposed
+        // it will re-send all emissions from begging
+
+        // E.g. after sharing invitations with class A
+        // I'd like to share them with class B as well
+
         /// connectableExample();
+        sharingExample();
     }
 
+    @SuppressWarnings("unused")
     static void connectableExample() throws InterruptedException {
         Observable<Long> autoObservable = Observable
                 .interval(1000, TimeUnit.MILLISECONDS)

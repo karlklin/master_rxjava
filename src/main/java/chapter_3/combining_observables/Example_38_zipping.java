@@ -15,7 +15,7 @@ public class Example_38_zipping {
         Observable.zip(source1, source2, (s, s2) -> s + "-" + s2)
                 .subscribe(System.out::println);
 
-        // The same with zipWith
+        System.out.println("The same with zipWith");
 
         source1.zipWith(source2, (s, s2) -> s + "+" + s2)
                 .subscribe(System.out::println);

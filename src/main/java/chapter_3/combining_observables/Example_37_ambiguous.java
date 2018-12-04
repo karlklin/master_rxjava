@@ -14,7 +14,6 @@ public class Example_37_ambiguous {
         Observable.ambArray(slowObservable, fastObservable)
                 .subscribe(System.out::println);
 
-
         System.out.println("=== short break ===");
         Thread.sleep(7000);
         System.out.println("=== starting again ===");
