@@ -8,7 +8,7 @@ public class Example_42_sharing {
 
     public static void main(String[] args) throws InterruptedException {
         // After using refCount when all observers are disposed
-        // it will re-send all emissions from begging
+        // it will re-send all emissions from begging to new observers
 
         // E.g. after sharing invitations with class A
         // I'd like to share them with class B as well

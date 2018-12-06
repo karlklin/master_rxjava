@@ -9,7 +9,8 @@ public class Example_43_caching {
     public static void main(String[] args) throws InterruptedException {
         // Caching vs Replying: https://stackoverflow.com/questions/32522017/rxjava-is-cache-the-same-as-replay/32537190#32537190
 
-        // But caching behaves differently. It suspends all emissions as long as all subscriptions are up to speed.
+        // But caching behaves differently. When a subscribes subscribe after the observable alreedy started emissions
+        // caching will suspend all emissions as long as the new subscription are up to speed.
 
         cacheExample();
     }

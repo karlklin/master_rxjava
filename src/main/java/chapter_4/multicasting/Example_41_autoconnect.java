@@ -17,7 +17,7 @@ public class Example_41_autoconnect {
         // In case of connect() when new Observer is subscribing and will receive emitters since now:
         // http://reactivex.io/documentation/operators/publish.html
 
-        // When autoConnect is used will start emissions when the defined numbers of observers subscribe.
+        // When autoConnect is used will start emitting only when the defined numbers of observers subscribe.
         // When other observers start subscribing will receive emissions since now.
 
         // So there is small difference between Auto-Connect and Connect. Use auto-connect when we know what is the desired
