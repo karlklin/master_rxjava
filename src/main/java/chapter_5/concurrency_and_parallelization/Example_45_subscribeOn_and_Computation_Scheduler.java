@@ -17,12 +17,22 @@ public class Example_45_subscribeOn_and_Computation_Scheduler {
         // - Scheduler.Single - for sequential computation but detached from main thread
 
         Observable<String> observable = Observable.just("item_1", "item_2", "item_3", "item_4", "item_5")
-                .subscribeOn(Schedulers.computation());
+               .subscribeOn(Schedulers.computation());
 
-        observable.subscribe(s -> System.out.println("Observer_1 : " + s + " : " + Thread.currentThread().getId()));
-        observable.subscribe(s -> System.out.println("Observer_2 : " + s + " : " + Thread.currentThread().getId()));
+        observable.subscribe(s -> {
+            Thread.sleep(1000);
+            System.out.println("Observer_1 : computing...");
+            System.out.println("Observer_1 : " + s + " : " + Thread.currentThread().getId());
 
-        Thread.sleep(3000);
+        });
+
+        observable.subscribe(s -> {
+            Thread.sleep(1000);
+            System.out.println("Observer_2 : computing...");
+            System.out.println("Observer_2 : " + s + " : " + Thread.currentThread().getId());
+        });
+
+        Thread.sleep(5000);
     }
 
 }
