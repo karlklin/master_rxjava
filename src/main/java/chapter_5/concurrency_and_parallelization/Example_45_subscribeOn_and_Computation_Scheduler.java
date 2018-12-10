@@ -1,11 +1,7 @@
 package chapter_5.concurrency_and_parallelization;
 
 import io.reactivex.Observable;
-import io.reactivex.Scheduler;
 import io.reactivex.schedulers.Schedulers;
-
-import java.time.LocalTime;
-import java.util.Timer;
 
 public class Example_45_subscribeOn_and_Computation_Scheduler {
 

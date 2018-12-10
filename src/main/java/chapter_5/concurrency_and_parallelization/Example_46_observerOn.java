@@ -16,8 +16,6 @@ public class Example_46_observerOn {
         observable2.subscribe(s -> System.out.println("Observer_1 : " + s + " : " + Thread.currentThread().getId()));
         observable2.subscribe(s -> System.out.println("Observer_2 : " + s + " : " + Thread.currentThread().getId()));
 
-
-
         Thread.sleep(3000);
     }
 
