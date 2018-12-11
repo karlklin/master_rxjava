@@ -9,7 +9,8 @@ import java.util.concurrent.TimeUnit;
 public class Example_48_Flowables {
 
     public static void main(String[] args) throws InterruptedException {
-        // Back-pressure - needed in case of asynchronous operations and high pace
+        // Flowables - leveraging Back-pressure and is needed in case of asynchronous operations and high pace
+        // Back-pressure - when Subscribes are not able to process emissions
 
         hugeDataSetUsingFlowables();
     }
