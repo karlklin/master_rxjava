@@ -7,11 +7,16 @@ import java.util.concurrent.TimeUnit;
 public class Example_53_boundary_based_buffering {
 
     public static void main(String[] args) throws InterruptedException {
-        /*Observable.interval(300, TimeUnit.MILLISECONDS)
+        // Following ones are boundary based buffering
+
+        // 1) with size of buffer
+        // 2) with another Observable as boundary
+
+        /* Observable.interval(300, TimeUnit.MILLISECONDS)
                 .buffer(5, 1)
                 .subscribe(System.out::println);
 
-        TimeUnit.MILLISECONDS.sleep(10000);*/
+        TimeUnit.MILLISECONDS.sleep(10000); */
 
         Observable.interval(333,TimeUnit.MILLISECONDS )
                 .buffer(Observable.interval(1000,TimeUnit.MILLISECONDS ))

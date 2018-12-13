@@ -10,7 +10,8 @@ public class Example_52_time_based_buffering {
         // Basically Buffering, Switching, Throttling and Windowing as
         // alternative for Flowables (Flowables come with some obstacles)
 
-        // We have two types: time and boundary based bufforin
+        // We have two types: time and boundary based buffering.
+        // Following one is time-based.
 
         Observable.interval(300, TimeUnit.MILLISECONDS)
                 .buffer(1000, TimeUnit.MILLISECONDS)
