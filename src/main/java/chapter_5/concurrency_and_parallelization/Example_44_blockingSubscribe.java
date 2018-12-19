@@ -9,14 +9,18 @@ import java.util.concurrent.TimeUnit;
 public class Example_44_blockingSubscribe {
 
     public static void main(String[] args) throws InterruptedException {
-        // blockingSubscribe blocks all Observers
+        // blockingSubscribe blocks the main thread
 
         ExecutorService executor = Executors.newFixedThreadPool(3);
         executor.submit(createNewWorkingThread("thread_1"));
 
-        Observable.interval(1000, TimeUnit.MILLISECONDS)
-                .take(5)
-                .blockingSubscribe(aLong -> System.out.println("observer 1: " + aLong),
+        Observable<Long> source = Observable.interval(1000, TimeUnit.MILLISECONDS)
+                .take(5);
+
+        source.subscribe(aLong -> System.out.println("observer 0: " + aLong),
+                Throwable::printStackTrace, () -> System.out.println("observer 0 is DONE"));
+
+        source.blockingSubscribe(aLong -> System.out.println("observer 1: " + aLong),
                         Throwable::printStackTrace, () -> System.out.println("observer 1 is DONE"));
 
         // Main Thread is blocked until the Blocking Subscribers are DONE

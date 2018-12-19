@@ -11,6 +11,28 @@ public class Example_12_Maybe_Observable {
     public static void main(String[] args) {
         // Comparing to SingleObservable it has also onComplete as it might not contain any items
 
+        System.out.println("=== Maybe when it is empty === ");
+
+        Observable.just("item")
+                .filter(String::isEmpty)
+                .firstElement()
+                .subscribe(s -> System.out.println("on success: " + s), Throwable::printStackTrace, () -> System.out.println("on complete"));
+
+        System.out.println("=== Maybe when there is an item === ");
+
+        Observable.just("item")
+                .filter(s -> !s.isEmpty())
+                .firstElement()
+                .subscribe(s -> System.out.println("on success: " + s), Throwable::printStackTrace, () -> System.out.println("on complete"));
+
+        System.out.println("=== Single === ");
+
+        Observable.just("item")
+                .filter(String::isEmpty)
+                .first("default")
+                .subscribe(s -> System.out.println("on success: " + s), Throwable::printStackTrace);
+
+
         MaybeObserver<String> maybeObserver = new MaybeObserver<String>() {
             @Override
             public void onSubscribe(Disposable d) {

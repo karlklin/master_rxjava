@@ -6,7 +6,7 @@ import io.reactivex.Observable;
 public class Example_13_Completable_Observable {
 
     public static void main(String[] args) {
-        // Completable is only interested when an observable, action or runnable is completed
+        // Completable is only interested when an observable, an action or a runnable is completed
 
         Completable.fromObservable(Observable.just("first", "second"))
                 .subscribe(() -> System.out.println("Completed Completable 1"));

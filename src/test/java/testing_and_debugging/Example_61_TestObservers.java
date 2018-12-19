@@ -20,6 +20,7 @@ public class Example_61_TestObservers {
         source.subscribe(testObserver);
         testObserver.assertSubscribed();
 
+        // Await until completes
         testObserver.awaitTerminalEvent();
 
         testObserver.assertNoErrors();

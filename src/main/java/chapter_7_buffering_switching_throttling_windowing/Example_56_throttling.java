@@ -7,6 +7,8 @@ import java.util.concurrent.TimeUnit;
 public class Example_56_throttling {
 
     public static void main(String[] args) throws InterruptedException {
+        // Throttling means receiving first or last values from given time window
+
         Observable.interval(1, TimeUnit.SECONDS)
                 .throttleFirst(5, TimeUnit.SECONDS)
                 .subscribe(interval -> System.out.println("throttling1: " + interval));
